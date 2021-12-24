@@ -24,7 +24,6 @@ class ViewController: UIViewController {
         let view = UIView()
         
         view.translatesAutoresizingMaskIntoConstraints = false
-//        view.backgroundColor = .blue
         return view
     }()
     
@@ -36,9 +35,6 @@ class ViewController: UIViewController {
         stackView.alignment = .fill
         stackView.distribution = .equalSpacing
         stackView.spacing = 5
-//        stackView.clipsToBounds = true
-        
-//        stackView.backgroundColor = .red
 
         return stackView
     }()
@@ -51,9 +47,7 @@ class ViewController: UIViewController {
         stackView.alignment = .fill
         stackView.distribution = .fillEqually
         stackView.spacing = 5
-        
-//        stackView.backgroundColor = .blue
-        
+                
         return stackView
     }()
     
@@ -66,10 +60,9 @@ class ViewController: UIViewController {
         stackView.distribution = .fillEqually
         stackView.spacing = 5
         
-//        stackView.backgroundColor = .brown
-
         return stackView
     }()
+    
     let stackView4: UIStackView = {
         let stackView = UIStackView()
         
@@ -78,82 +71,41 @@ class ViewController: UIViewController {
         stackView.alignment = .fill
         stackView.distribution = .equalSpacing
         stackView.spacing = 5
-        
-//        stackView.backgroundColor = .cyan
-
+    
         return stackView
     }()
+    
     let stackView5: UIStackView = {
         let stackView = UIStackView()
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.alignment = .fill
-//        stackView.distribution =
         stackView.spacing = 5
         
-//        stackView.backgroundColor = .black
-
         return stackView
     }()
-  
-    let ACButton: RoundButton = {
-
-        var button = RoundButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("AC", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = UIColor(red: 165/255, green: 165/255, blue: 165/255, alpha: 1)
-        return button
-    }()
     
-//    let ACButton: UIButton = {
-//
-//        var button = UIButton()
-//        button.translatesAutoresizingMaskIntoConstraints = false
-//        button.setTitle("AC", for: .normal)
-//        button.setTitleColor(.black, for: .normal)
-//        button.backgroundColor = UIColor(red: 165/255, green: 165/255, blue: 165/255, alpha: 1)
-//        return button
-//    }()
-    
-    var divideButton: RoundButton = {
-        var button = RoundButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("/", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        return button
-    }()
-    
-    let num7Button: RoundButton = {
+    let num1button: RoundButton = {
         let button = RoundButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("7", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        return button
-    }()
-    
-    let num8Button: RoundButton = {
-        let button = RoundButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("8", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        return button
-    }()
-    
-    let num9Button: RoundButton = {
-        let button = RoundButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("9", for: .normal)
+        button.setTitle("1", for: .normal)
         button.setTitleColor(.white, for: .normal)
 
         return button
     }()
-    
-    let multiplyButton: RoundButton = {
+    let num2button: RoundButton = {
         let button = RoundButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("X", for: .normal)
+        button.setTitle("2", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+
+        return button
+    }()
+    let num3button: RoundButton = {
+        let button = RoundButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("3", for: .normal)
         button.setTitleColor(.white, for: .normal)
 
         return button
@@ -179,6 +131,70 @@ class ViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         return button
     }()
+    let num7Button: RoundButton = {
+        let button = RoundButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("7", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        return button
+    }()
+    
+    let num8Button: RoundButton = {
+        let button = RoundButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("8", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        return button
+    }()
+    
+    let num9Button: RoundButton = {
+        let button = RoundButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("9", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+
+        return button
+    }()
+    
+    let num0button: RoundButton = {
+        let button = RoundButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("0", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+
+        return button
+    }()
+    
+    let ACButton: RoundButton = {
+        let button = RoundButton()
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("AC", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.backgroundColor = UIColor(red: 165/255, green: 165/255, blue: 165/255, alpha: 1)
+        
+        return button
+    }()
+    
+    let divideButton: RoundButton = {
+        
+        let button = RoundButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("/", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        
+        return button
+    }()
+    
+    let multiplyButton: RoundButton = {
+        let button = RoundButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("X", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+
+        return button
+    }()
+    
     let subtractButton: RoundButton = {
         let button = RoundButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -186,42 +202,11 @@ class ViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         return button
     }()
-    let num1button: RoundButton = {
-        let button = RoundButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("1", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-
-        return button
-    }()
-    let num2button: RoundButton = {
-        let button = RoundButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("2", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-
-        return button
-    }()
-    let num3button: RoundButton = {
-        let button = RoundButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("3", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-
-        return button
-    }()
+    
     let addButton: RoundButton = {
         let button = RoundButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("+", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-
-        return button
-    }()
-    let num0button: RoundButton = {
-        let button = RoundButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("0", for: .normal)
         button.setTitleColor(.white, for: .normal)
 
         return button
@@ -237,7 +222,9 @@ class ViewController: UIViewController {
     }()
     
     let resultButton: RoundButton = {
+        
         let button = RoundButton()
+        
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("=", for: .normal)
         button.setTitleColor(.white, for: .normal)
@@ -254,9 +241,9 @@ class ViewController: UIViewController {
         stackView.spacing = 8
         return stackView
     }()
+
     
     override func viewDidLoad() {
-        print("viewDidLoad")
         super.viewDidLoad()
         self.view.backgroundColor = .black
         self.padView.backgroundColor = .black
@@ -264,10 +251,10 @@ class ViewController: UIViewController {
         self.view.addSubview(resultLabel)
         self.view.addSubview(padView)
         self.padView.addSubview(wholeStackView)
-        
         setWholeStackView()
         
         let safeArea = self.view.safeAreaLayoutGuide
+
         self.resultLabel.topAnchor.constraint(equalTo: safeArea.topAnchor, constant: 24).isActive = true
         self.resultLabel.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 24).isActive = true
         self.resultLabel.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor, constant: -24).isActive = true
@@ -281,41 +268,28 @@ class ViewController: UIViewController {
         self.wholeStackView.topAnchor.constraint(equalTo: padView.topAnchor).isActive = true
         self.wholeStackView.leadingAnchor.constraint(equalTo: padView.leadingAnchor).isActive = true
         self.wholeStackView.trailingAnchor.constraint(equalTo: padView.trailingAnchor).isActive = true
-//        self.wholeStackView.bottomAnchor.constraint(equalTo: padView.bottomAnchor).priority = UILayoutPriority(755)
-//        self.wholeStackView.bottomAnchor.constraint(equalTo: padView.bottomAnchor).isActive = true
         
         self.ACButton.trailingAnchor.constraint(equalTo: num9Button.trailingAnchor).isActive = true
         self.num0button.trailingAnchor.constraint(equalTo: num2button.trailingAnchor).isActive = true
        
         [divideButton,multiplyButton, subtractButton, addButton,resultButton].forEach {
             $0.backgroundColor = UIColor(red: 254/255, green: 160/255, blue: 10/255, alpha: 1)
-//            $0.layer.cornerRadius = $0.bounds.height/2
         }
         
         [num1button,num2button,num3button,num4Button,num5Button,num6button,num7Button,num8Button,num9Button, num0button, pointButton].forEach {
             $0.backgroundColor = UIColor(red: 51/255, green: 51/255, blue: 51/255, alpha: 1)
         }
+        self.view.layoutIfNeeded()
     }
+    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        print("viewdidLayoutSubView")
-        ACButton.isRound = true
-        
-//        [num1button,num2button,num3button,num4Button,num5Button,num6button,num7Button,num8Button,num9Button, num0button, pointButton].forEach {
-//            $0.isRound = true
-//        }
-        
+        print("viewDidLayouSubviews")
+        [num1button,num2button,num3button,num4Button,num5Button,num6button,num7Button,num8Button,num9Button, num0button, pointButton,divideButton,addButton, multiplyButton,subtractButton,resultButton, ACButton].forEach {
+            $0.isRound = true
+        }
     }
-    
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        print(ACButton.layer.cornerRadius)
-        
-    }
-    
-
     
     func setStackView1() {
         [ACButton,divideButton].forEach {
@@ -374,8 +348,6 @@ class ViewController: UIViewController {
         setStackView3()
         setStackView4()
         setStackView5()
-        
-        
     }
 }
 

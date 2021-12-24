@@ -12,9 +12,6 @@ public class RoundButton: UIButton {
         didSet {
             if isRound {
                 self.layer.cornerRadius = self.frame.height/2
-                print("make Button Rounded")
-                print(self.bounds.height)
-                print(self.layer.cornerRadius)
             }
         }
     }
@@ -22,6 +19,5 @@ public class RoundButton: UIButton {
 //    public override func layoutSubviews() {
 //        super.layoutSubviews()
 //        layer.cornerRadius = layer.frame.height / 2
-//        print("layout subViews - \(layer.cornerRadius)")
 //    }
 }
