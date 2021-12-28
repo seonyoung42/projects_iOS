@@ -7,7 +7,21 @@
 
 import UIKit
 
+enum Operation {
+    case Add
+    case Subtract
+    case Multiply
+    case Divide
+    case unknown
+}
+
 class ViewController: UIViewController {
+    
+    var displayNumber = ""
+    var firstOperand = ""
+    var secondOperand = ""
+    var result = ""
+    var currentOperation: Operation = .unknown
     
     let resultLabel: UILabel = {
         let label = UILabel()
@@ -91,14 +105,17 @@ class ViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("1", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(tapNumberButton(_:)), for: .touchUpInside)
 
         return button
     }()
+    
     let num2button: RoundButton = {
         let button = RoundButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("2", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(tapNumberButton(_:)), for: .touchUpInside)
 
         return button
     }()
@@ -107,6 +124,8 @@ class ViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("3", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(tapNumberButton(_:)), for: .touchUpInside)
+
 
         return button
     }()
@@ -115,6 +134,8 @@ class ViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("4", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(tapNumberButton(_:)), for: .touchUpInside)
+
         return button
     }()
     let num5Button: RoundButton = {
@@ -122,6 +143,8 @@ class ViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("5", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(tapNumberButton(_:)), for: .touchUpInside)
+
         return button
     }()
     let num6button: RoundButton = {
@@ -129,6 +152,8 @@ class ViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("6", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(tapNumberButton(_:)), for: .touchUpInside)
+
         return button
     }()
     let num7Button: RoundButton = {
@@ -136,6 +161,8 @@ class ViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("7", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(tapNumberButton(_:)), for: .touchUpInside)
+
         return button
     }()
     
@@ -144,6 +171,8 @@ class ViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("8", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(tapNumberButton(_:)), for: .touchUpInside)
+
         return button
     }()
     
@@ -152,6 +181,7 @@ class ViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("9", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(tapNumberButton(_:)), for: .touchUpInside)
 
         return button
     }()
@@ -161,6 +191,7 @@ class ViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("0", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(tapNumberButton(_:)), for: .touchUpInside)
 
         return button
     }()
@@ -172,6 +203,7 @@ class ViewController: UIViewController {
         button.setTitle("AC", for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.backgroundColor = UIColor(red: 165/255, green: 165/255, blue: 165/255, alpha: 1)
+        button.addTarget(self, action: #selector(tapClearButton(_:)), for: .touchUpInside)
         
         return button
     }()
@@ -182,6 +214,7 @@ class ViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("/", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(tapDivideButton(_:)), for: .touchUpInside)
         
         return button
     }()
@@ -191,6 +224,7 @@ class ViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("X", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(tapMultiplyButton(_:)), for: .touchUpInside)
 
         return button
     }()
@@ -200,6 +234,8 @@ class ViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("-", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(tapSubtractButton(_:)), for: .touchUpInside)
+        
         return button
     }()
     
@@ -208,6 +244,7 @@ class ViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("+", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(tapAddButton(_:)), for: .touchUpInside)
 
         return button
     }()
@@ -217,6 +254,7 @@ class ViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle(".", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(tapDotButton(_:)), for: .touchUpInside)
 
         return button
     }()
@@ -228,6 +266,7 @@ class ViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("=", for: .normal)
         button.setTitleColor(.white, for: .normal)
+        button.addTarget(self, action: #selector(tapEqualButton(_:)), for: .touchUpInside)
 
         return button
     }()
@@ -348,6 +387,88 @@ class ViewController: UIViewController {
         setStackView3()
         setStackView4()
         setStackView5()
+    }
+    
+    @objc func tapNumberButton(_ sender: UIButton) {
+        guard let numberValue = sender.title(for: .normal) else { return }
+        if self.displayNumber.count < 9 {
+            self.displayNumber += numberValue
+            self.resultLabel.text = displayNumber
+        }
+        
+    }
+    
+    @objc func tapClearButton(_ sender: UIButton) {
+        displayNumber = ""
+        firstOperand = ""
+        secondOperand = ""
+        result = ""
+        currentOperation = .unknown
+        resultLabel.text = "0"
+    }
+    
+    @objc func tapDotButton(_ sender: UIButton) {
+        if displayNumber.count < 8, !displayNumber.contains(".") {
+            displayNumber += displayNumber.isEmpty ? "0." : "."
+            resultLabel.text = displayNumber
+        }
+    }
+    
+    @objc func tapDivideButton(_ sender: UIButton) {
+        operation(.Divide)
+    }
+    
+    @objc func tapMultiplyButton(_ sender: UIButton) {
+        operation(.Multiply)
+    }
+    
+    @objc func tapSubtractButton(_ sender: UIButton) {
+        operation(.Subtract)
+    }
+    
+    @objc func tapAddButton(_ sender: UIButton) {
+        operation(.Add)
+    }
+    
+    @objc func tapEqualButton(_ sender: UIButton) {
+        operation(self.currentOperation)
+    }
+    
+    func operation(_ operation: Operation) {
+        if currentOperation != .unknown {
+            if !self.displayNumber.isEmpty {
+                secondOperand = displayNumber
+                displayNumber = ""
+                
+                guard let firstOperand = Double(self.firstOperand) else { return }
+                guard let secondOperand = Double(self.secondOperand) else { return }
+                
+                switch self.currentOperation {
+                case .Add:
+                    self.result = "\(firstOperand + secondOperand)"
+                case .Subtract:
+                    self.result = "\(firstOperand - secondOperand)"
+                case .Divide:
+                    self.result = "\(firstOperand / secondOperand)"
+                case .Multiply:
+                    self.result = "\(firstOperand * secondOperand)"
+                default:
+                    break
+                }
+                
+                if let result = Double(self.result), result.truncatingRemainder(dividingBy: 1) == 0 {
+                    self.result = "\(Int(result))"
+                }
+                
+                self.firstOperand = result
+                resultLabel.text = result
+            }
+            self.currentOperation = operation
+        } else {
+            firstOperand = displayNumber
+            currentOperation = operation
+            displayNumber = ""
+        }
     }
 }
 
