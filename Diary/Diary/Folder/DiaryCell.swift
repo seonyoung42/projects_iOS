@@ -32,15 +32,21 @@ class DiaryCell: UICollectionViewCell {
         addSubview(titleLabel)
         addSubview(dateLabel)
         
-        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive = true
-        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 12).isActive = true
-        titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 12).isActive = true
-        titleLabel.bottomAnchor.constraint(equalTo: dateLabel.topAnchor, constant: 12).isActive = true
-        titleLabel.setContentHuggingPriority(.defaultLow, for: .vertical)
+        backgroundColor = .blue
         
+        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12).isActive = true
+        titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 12).isActive = true
+        
+        titleLabel.setContentHuggingPriority(.defaultLow, for: .vertical)
+        titleLabel.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+        
+        dateLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12).isActive = true
         dateLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive = true
-        dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 12).isActive = true
-        dateLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 12).isActive = true
+        dateLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12).isActive = true
+        dateLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12).isActive = true
+        
+        dateLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
         dateLabel.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
     }
     
@@ -48,3 +54,5 @@ class DiaryCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
+
