@@ -12,14 +12,13 @@ class StarCell: UICollectionViewCell {
     let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        
         return label
     }()
     
     let dateLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 17, weight: .semibold)
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
@@ -27,18 +26,28 @@ class StarCell: UICollectionViewCell {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 12
+        stackView.alignment = .fill
+        stackView.distribution = .fill
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(stackView)
-        stackView.addArrangedSubview(titleLabel)
-        stackView.addArrangedSubview(dateLabel)
         
         stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24).isActive = true
-        stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: 24).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24).isActive = true
         stackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        
+        stackView.addArrangedSubview(titleLabel)
+        stackView.addArrangedSubview(dateLabel)
+        titleLabel.backgroundColor = .blue
+        dateLabel.backgroundColor = .blue
+        
+        contentView.layer.cornerRadius = 3
+        contentView.layer.borderWidth = 1
+        contentView.layer.borderColor = UIColor.black.cgColor
         
     }
     

@@ -31,9 +31,7 @@ class DiaryCell: UICollectionViewCell {
         super.init(frame: frame)
         addSubview(titleLabel)
         addSubview(dateLabel)
-        
-        backgroundColor = .blue
-        
+                
         titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12).isActive = true
         titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 12).isActive = true
@@ -48,6 +46,10 @@ class DiaryCell: UICollectionViewCell {
         
         dateLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
         dateLabel.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
+        
+        contentView.layer.cornerRadius = 3.0
+        contentView.layer.borderWidth = 1
+        contentView.layer.borderColor = UIColor.black.cgColor
     }
     
     required init?(coder: NSCoder) {

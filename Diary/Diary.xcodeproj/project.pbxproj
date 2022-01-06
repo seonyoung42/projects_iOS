@@ -84,6 +84,7 @@
 				2B653B1F2782EFA4007C7256 /* ViewController.swift */,
 				2B653B5C27843BD5007C7256 /* WriteDiaryViewController.swift */,
 				2B653B312782FD6D007C7256 /* DiaryCell.swift */,
+				2B653B5E27843FB1007C7256 /* DiaryDetailViewController.swift */,
 			);
 			path = Folder;
 			sourceTree = "<group>";
@@ -92,7 +93,6 @@
 			isa = PBXGroup;
 			children = (
 				2B653B2F2782F3F0007C7256 /* StarViewController.swift */,
-				2B653B5E27843FB1007C7256 /* DiaryDetailViewController.swift */,
 				2B653B3327830102007C7256 /* StarCell.swift */,
 			);
 			path = Star;
