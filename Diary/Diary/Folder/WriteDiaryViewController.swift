@@ -147,20 +147,21 @@ class WriteDiaryViewController: UIViewController {
         guard let content = self.contentTextView.text else { return }
         guard let date = self.diaryDate else { return }
         
-        let diary = Diary(title: title, content: content, date: date, isStar: false)
         
         switch self.diaryMode {
         case .new:
+            let diary = Diary(uuidString: UUID().uuidString, title: title, content: content, date: date, isStar: false)
             self.delegate?.didSelectRegister(diary: diary)
-        case let .edit(indexPath, _):
+            
+        case let .edit(_, diary):
+            let diary = Diary(uuidString: diary.uuidString, title: title, content: content, date: date, isStar: diary.isStar)
+            
             NotificationCenter.default.post(
                 name: Notification.Name("editDiary"),
                 object: diary,
-                userInfo: [
-                    "indexPath.row": indexPath.row
-                ]
-            )
+                userInfo: nil)
         }
+        
         self.navigationController?.popViewController(animated: true)
     }
     

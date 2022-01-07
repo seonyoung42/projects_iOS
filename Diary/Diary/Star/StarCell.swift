@@ -42,8 +42,8 @@ class StarCell: UICollectionViewCell {
         
         stackView.addArrangedSubview(titleLabel)
         stackView.addArrangedSubview(dateLabel)
-        titleLabel.backgroundColor = .blue
-        dateLabel.backgroundColor = .blue
+//        titleLabel.backgroundColor = .blue
+//        dateLabel.backgroundColor = .blue
         
         contentView.layer.cornerRadius = 3
         contentView.layer.borderWidth = 1

@@ -7,10 +7,10 @@
 
 import UIKit
 
-protocol DiaryDetailViewDelegate: AnyObject {
-    func didSelectDelete(indexpath: IndexPath)
-    func didSelectStar(indexPath: IndexPath, isStar: Bool)
-}
+//protocol DiaryDetailViewDelegate: AnyObject {
+//    func didSelectDelete(indexpath: IndexPath)
+//    func didSelectStar(indexPath: IndexPath, isStar: Bool)
+//}
 
 class DiaryDetailViewController: UIViewController {
     
@@ -113,7 +113,7 @@ class DiaryDetailViewController: UIViewController {
     
     var diary: Diary?
     var indexPath: IndexPath?
-    weak var delegate: DiaryDetailViewDelegate?
+//    weak var delegate: DiaryDetailViewDelegate?
     var starButton: UIBarButtonItem?
 
     override func viewDidLoad() {
@@ -155,6 +155,21 @@ class DiaryDetailViewController: UIViewController {
         stackView3.addArrangedSubview(deleteButton)
         
         configureView()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(starDiaryNotification(_:)), name: Notification.Name("starDiary"), object: nil)
+    }
+    
+    @objc func starDiaryNotification(_ notification: Notification) {
+        guard let starDiary = notification.object as? [String:Any] else { return }
+        guard let isStar = starDiary["isStar"] as? Bool else { return }
+        guard let uuidSting = starDiary["uuidString"] as? String else { return }
+        guard let diary = self.diary else { return }
+        
+        if diary.uuidString == uuidSting {
+            self.diary?.isStar = isStar
+            self.configureView()
+        }
+        
     }
     
     private func configureView() {
@@ -178,7 +193,7 @@ class DiaryDetailViewController: UIViewController {
     
     @objc func tapStarButton() {
         guard let isStar = diary?.isStar else { return }
-        guard let indexPath = self.indexPath else { return }
+//        guard let indexPath = self.indexPath else { return }
         
         if isStar {
             self.starButton?.image = UIImage(systemName: "star")
@@ -187,27 +202,59 @@ class DiaryDetailViewController: UIViewController {
         }
         
         self.diary?.isStar = !isStar
-        self.delegate?.didSelectStar(indexPath: indexPath, isStar: !isStar)
+//        self.delegate?.didSelectStar(indexPath: indexPath, isStar: !isStar)
+        
+//        NotificationCenter.default.post(
+//            name: Notification.Name("editDiary"),
+//            object: diary,
+//            userInfo: [
+//                "indexPath.row": indexPath.row
+//            ]
+//        )
+        
+        NotificationCenter.default.post(
+            name: NSNotification.Name("starDiary"),
+            object: [
+                "diary": self.diary,
+                "isStar": self.diary?.isStar ?? false,
+                "uuidString": self.diary?.uuidString
+            ],
+            userInfo: nil)
+        
+        
     }
     
+    // > Diary 삭제
     @objc func deleteDiary() {
-        guard let indexPath = self.indexPath else { return }
-        delegate?.didSelectDelete(indexpath: indexPath)
+        guard let uuidString = self.diary?.uuidString else { return }
+        
+        // > delegate 로 삭제하는 diary의 indexPath 전달
+//        delegate?.didSelectDelete(indexpath: indexPath)
+        
+        // > NotificationCenter로 삭제할 diary의 indexPath 전달
+        NotificationCenter.default.post(
+            name: Notification.Name("deleteDiary"),
+            object: uuidString,
+            userInfo: nil)
+        
         self.navigationController?.popViewController(animated: true)
     }
     
+    
     @objc func editDiary() {
         let nextVC = WriteDiaryViewController()
+        
         guard let indexPath = self.indexPath else { return }
         guard let diary = self.diary else { return }
+        
         nextVC.diaryMode = .edit(indexPath, diary)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(editDiaryNotification(_:)), name: Notification.Name("editDiary"), object: nil)
         navigationController?.pushViewController(nextVC, animated: true)
     }
     
     @objc func editDiaryNotification(_ notification: Notification) {
         guard let diary = notification.object as? Diary else { return }
-        guard let row = notification.userInfo?["indexPath.row"] as? Int else { return }
         
         self.diary = diary
         self.configureView()
