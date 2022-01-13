@@ -7,6 +7,7 @@
 
 import UIKit
 import SwiftUI
+import Alamofire
 
 class ViewController: UIViewController {
     
@@ -18,9 +19,9 @@ class ViewController: UIViewController {
     }()
     
     let button: UIButton = {
-        let button = UIButton()
+        let button = UIButton(type: .system)
         button.setTitle("날씨 가져오기", for: .normal)
-        button.setTitleColor(UIColor.systemBlue, for: .normal)
+//        button.setTitleColor(UIColor.systemBlue, for: .normal)
         button.addTarget(self, action: #selector(tapFetchWeatherButton), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -139,6 +140,15 @@ class ViewController: UIViewController {
     @objc func tapFetchWeatherButton() {
         if let cityName = self.cityNameTextField.text {
             getCurrentWeather(cityName: cityName )
+            getCurrentWeatherAlam(cityName: cityName) { [weak self] result in
+                switch result {
+                case let .success(result):
+                    self?.weatherStackView.isHidden = false
+                    self?.configureView(weatherInformation: result)
+                case let .failure(error):
+                    self?.showAlert(errorMessage: error.localizedDescription)
+                }
+            }
             self.view.endEditing(true)
         }
     }
@@ -171,6 +181,33 @@ class ViewController: UIViewController {
             }
         }.resume()
     }
+    
+    
+    
+    func getCurrentWeatherAlam(cityName:String,
+                               completionHandler: @escaping (Result<WeatherInformation,Error>) -> Void)
+    {
+        let url = "https://api.openweathermap.org/data/2.5/weather?q=\(cityName)&appid=개인 API KEY"
+
+        AF.request(url, method: .get)
+            .responseData { response in
+                let decoder = JSONDecoder()
+                switch response.result {
+                case let .success(data):
+                    do {
+                        let result = try decoder.decode(WeatherInformation.self, from: data)
+                        completionHandler(.success(result))
+                    } catch {
+                        completionHandler(.failure(error))
+                    }
+                case let .failure(error):
+                    completionHandler(.failure(error))
+                }
+        }
+    }
+    
+    
+    
 
     func showAlert(errorMessage: String) {
         let ac = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
@@ -191,29 +228,3 @@ class ViewController: UIViewController {
 
 }
 
-struct PreView: PreviewProvider {
-    static var previews: some View {
-        ViewController().toPreview()
-    }
-}
-
-
-#if DEBUG
-extension UIViewController {
-    private struct Preview: UIViewControllerRepresentable {
-            let viewController: UIViewController
-
-            func makeUIViewController(context: Context) -> UIViewController {
-                return viewController
-            }
-
-            func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-            }
-        }
-
-        func toPreview() -> some View {
-            Preview(viewController: self)
-        }
-}
-
-#endif
