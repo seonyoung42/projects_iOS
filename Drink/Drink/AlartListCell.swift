@@ -27,28 +27,31 @@ class AlartListCell: UITableViewCell {
     
     let alartSwitch: UISwitch = {
         let switches = UISwitch()
-        switches.translatesAutoresizingMaskIntoConstraints = false
         switches.addTarget(self, action: #selector(alartSwitchValueChanged(_:)), for: .touchUpInside)
+        switches.translatesAutoresizingMaskIntoConstraints = false
         return switches
     }()
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+                
         addSubview(meridiumLabel)
         addSubview(timeLabel)
         addSubview(alartSwitch)
+        
         meridiumLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20).isActive = true
-        meridiumLabel.bottomAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: 8).isActive = true
+        meridiumLabel.bottomAnchor.constraint(equalTo: timeLabel.bottomAnchor, constant: -8).isActive = true
         timeLabel.leadingAnchor.constraint(equalTo: meridiumLabel.trailingAnchor, constant: 0).isActive = true
-//        label2.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         timeLabel.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-//        label2.bottomAnchor.constraint(equalTo: label.bottomAnchor).isActive = true
         alartSwitch.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20).isActive = true
         alartSwitch.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-        
+                
         self.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        self.widthAnchor.constraint(equalToConstant: 375).isActive = true
+//        self.widthAnchor.constraint(equalToConstant: 375).isActive = true
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -64,5 +67,4 @@ class AlartListCell: UITableViewCell {
         alerts[sender.tag].isOn = sender.isOn
         UserDefaults.standard.set(try? PropertyListEncoder().encode(alerts), forKey: "alerts")
     }
-
 }

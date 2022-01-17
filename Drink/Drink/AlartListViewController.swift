@@ -15,9 +15,9 @@ class AlartListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.title = "물 마시기"
+        self.navigationItem.title = "물마시기"
         
-        tableView.style == .grouped
+        tableView = UITableView(frame: self.tableView.frame, style: .grouped)
         tableView.register(AlartListCell.self, forCellReuseIdentifier: "AlartListCell")
         
         let button = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(tapAddAlertButton))
@@ -27,6 +27,7 @@ class AlartListViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         alerts = alertList()
+        print(alerts.count)
     }
     
     @objc func tapAddAlertButton() {
@@ -47,8 +48,7 @@ class AlartListViewController: UITableViewController {
             UserDefaults.standard.set(try? PropertyListEncoder().encode(self.alerts), forKey: "alerts")
             self.tableView.reloadData()
         }
-        self.navigationController?.pushViewController(addAlertVC, animated: true)
-//        self.present(addAlertVC, animated: true, completion: nil)
+        self.present(addAlertVC, animated: true, completion: nil)
     }
     
     func alertList() -> [Alert] {
@@ -68,7 +68,7 @@ extension AlartListViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "물 마실 시간"
+            return "💧물 마실 시간"
         default:
             return nil
         }
@@ -77,11 +77,13 @@ extension AlartListViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "AlartListCell") as? AlartListCell else { return UITableViewCell() }
         
-        cell.alartSwitch.isOn = alerts[indexPath.row].isOn
-        cell.timeLabel.text = alerts[indexPath.row].time
-        cell.meridiumLabel.text = alerts[indexPath.row].meridiem
+        let alert = alerts[indexPath.row]
         
+        cell.alartSwitch.isOn = alert.isOn
+        cell.timeLabel.text = alert.time
+        cell.meridiumLabel.text = alert.meridiem
         cell.alartSwitch.tag = indexPath.row
+        cell.contentView.isUserInteractionEnabled = false
         
         return cell
     }
