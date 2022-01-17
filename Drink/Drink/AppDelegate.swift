@@ -6,14 +6,26 @@
 //
 
 import UIKit
+import NotificationCenter
+import UserNotifications
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let userNotificationCenter = UNUserNotificationCenter.current()
+
+
+        UNUserNotificationCenter.current().delegate = self
+        
+        let authrizationOptions = UNAuthorizationOptions(arrayLiteral: [.alert, .badge, .sound])
+        userNotificationCenter.requestAuthorization(options: authrizationOptions) { _, error in
+            if let error = error {
+                print("ERROR: notification authorization request \(error.localizedDescription)")
+            }
+        }
+        
         return true
     }
 
@@ -34,3 +46,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.banner, .list, .badge, .sound])
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
+}

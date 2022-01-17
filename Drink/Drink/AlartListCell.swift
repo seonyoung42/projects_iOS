@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class AlartListCell: UITableViewCell {
     
@@ -32,6 +33,8 @@ class AlartListCell: UITableViewCell {
         return switches
     }()
     
+    let userNotificationCenter = UNUserNotificationCenter.current()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
                 
@@ -47,7 +50,6 @@ class AlartListCell: UITableViewCell {
         alartSwitch.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
                 
         self.heightAnchor.constraint(equalToConstant: 80).isActive = true
-//        self.widthAnchor.constraint(equalToConstant: 375).isActive = true
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -66,5 +68,11 @@ class AlartListCell: UITableViewCell {
         
         alerts[sender.tag].isOn = sender.isOn
         UserDefaults.standard.set(try? PropertyListEncoder().encode(alerts), forKey: "alerts")
+        
+        if sender.isOn {
+            userNotificationCenter.addNotificationRequest(by: alerts[sender.tag])
+        } else {
+            userNotificationCenter.removePendingNotificationRequests(withIdentifiers: [alerts[sender.tag].id])
+        }
     }
 }

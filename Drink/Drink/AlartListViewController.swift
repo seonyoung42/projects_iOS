@@ -7,10 +7,12 @@
 
 import UIKit
 import SwiftUI
+import UserNotifications
 
 class AlartListViewController: UITableViewController {
     
     var alerts = [Alert]()
+    let userNotificationCenter = UNUserNotificationCenter.current()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +48,7 @@ class AlartListViewController: UITableViewController {
             self.alerts = alertList
             
             UserDefaults.standard.set(try? PropertyListEncoder().encode(self.alerts), forKey: "alerts")
+            self.userNotificationCenter.addNotificationRequest(by: newAlert)
             self.tableView.reloadData()
         }
         self.present(addAlertVC, animated: true, completion: nil)
@@ -101,6 +104,8 @@ extension AlartListViewController {
         case .delete:
             self.alerts.remove(at: indexPath.row)
             UserDefaults.standard.set(try? PropertyListEncoder().encode(self.alerts),forKey: "alerts")
+            userNotificationCenter.removePendingNotificationRequests(withIdentifiers: [alerts[indexPath.row].id])
+            
             self.tableView.reloadData()
         return
         default:
