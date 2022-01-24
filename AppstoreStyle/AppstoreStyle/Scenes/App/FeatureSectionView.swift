@@ -8,6 +8,13 @@
 import UIKit
 
 final class FeatureSectionView: UIView {
+    
+    private var featureList = [Feature]() {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
     private lazy var collectionView : UICollectionView = {
         
         let layout = UICollectionViewFlowLayout()
@@ -20,7 +27,6 @@ final class FeatureSectionView: UIView {
         layout.minimumLineSpacing = 32.0
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-//        collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.isPagingEnabled = true
         collectionView.backgroundColor = .systemBackground
@@ -35,6 +41,7 @@ final class FeatureSectionView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupView()
+        fetchData()
     }
     
     required init?(coder: NSCoder) {
@@ -44,13 +51,13 @@ final class FeatureSectionView: UIView {
 
 extension FeatureSectionView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        featureList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FeatureSectionCollectionViewCell", for: indexPath) as? FeatureSectionCollectionViewCell else { return UICollectionViewCell() }
-        
-        cell.setup()
+        let feature = featureList[indexPath.item]
+        cell.setup(feature)
         
         return cell
     }
@@ -70,6 +77,21 @@ private extension FeatureSectionView {
         separatorView.snp.makeConstraints {
             $0.leading.trailing.bottom.equalToSuperview()
             $0.top.equalTo(collectionView.snp.bottom).offset(16.0)
+        }
+    }
+}
+
+// fetch Feature data
+private extension FeatureSectionView {
+    func fetchData() {
+        guard let url = Bundle.main.url(forResource: "Feature", withExtension: "plist") else { return }
+        
+        do {
+            let data = try Data(contentsOf: url)
+            let result = try PropertyListDecoder().decode([Feature].self, from: data)
+            self.featureList = result
+        } catch {
+            
         }
     }
 }

@@ -10,7 +10,9 @@ import SnapKit
 
 class TodayViewController: UIViewController {
     
-    var collectionView: UICollectionView = {
+    private var todayList = [Today]()
+    
+    private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         
@@ -22,6 +24,8 @@ class TodayViewController: UIViewController {
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .white
+        collectionView.dataSource = self
+        collectionView.delegate = self
         
         //cell 등록
         collectionView.register(TodayCollectionViewCell.self, forCellWithReuseIdentifier: "TodayCollectionViewCell")
@@ -34,31 +38,30 @@ class TodayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
-        
         self.view.addSubview(collectionView)
-//        self.collectionView.delegate = self
-        self.collectionView.dataSource = self
         
         collectionView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
+        getData()
     }
 }
 
 
 // collectionView Datasource, delegate
-extension TodayViewController: UICollectionViewDataSource {
+extension TodayViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     // cell 개수
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        10
+        todayList.count
     }
     
     // cell 설정
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TodayCollectionViewCell", for: indexPath) as? TodayCollectionViewCell else { return UICollectionViewCell() }
-
-        cell.configureCell()
+        let today = todayList[indexPath.item]
+        
+        cell.configureCell(today)
         
         return cell
     }
@@ -77,5 +80,27 @@ extension TodayViewController: UICollectionViewDataSource {
         }
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let today = todayList[indexPath.item]
+        let detailVC = AppDetailViewController()
+        detailVC.app = today
+        self.present(detailVC, animated: true, completion: nil)
+    }
+    
 }
 
+
+// fetch Data from plist
+private extension TodayViewController {
+    func getData() {
+        guard let url = Bundle.main.url(forResource: "Today", withExtension: "plist") else { return }
+        
+        do {
+            let data = try Data(contentsOf: url)
+            let result = try PropertyListDecoder().decode([Today].self,from: data)
+            self.todayList = result
+        } catch {
+            
+        }
+    }
+}

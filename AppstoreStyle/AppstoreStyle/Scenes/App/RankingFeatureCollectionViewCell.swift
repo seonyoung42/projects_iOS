@@ -7,8 +7,10 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class RankingFeatureCollectionViewCell: UICollectionViewCell {
+    
     static var height: CGFloat { 70.0}
     
     private lazy var imageView: UIImageView = {
@@ -21,14 +23,14 @@ class RankingFeatureCollectionViewCell: UICollectionViewCell {
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "오이마켓"
+//        label.text = "오이마켓"
         label.font = .systemFont(ofSize: 16, weight: .bold)
         return label
     }()
     
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "집에서 잠자고 있는 물건들을 꺼내볼가요?"
+//        label.text = "집에서 잠자고 있는 물건들을 꺼내볼가요?"
         label.font = .systemFont(ofSize: 13, weight: .semibold)
         label.textColor = UIColor.secondaryLabel
         return label
@@ -48,13 +50,16 @@ class RankingFeatureCollectionViewCell: UICollectionViewCell {
     private lazy var descriptionLabel2: UILabel = {
         let label = UILabel()
         label.text = "앱 내 구입"
+        label.isHidden = true
         label.font = .systemFont(ofSize: 10, weight: .semibold)
         return label
     }()
 
-    func setup() {
+    func setup(_ item: RankingFeature){
         setupLayout()
-        imageView.backgroundColor = .lightGray
+        titleLabel.text = item.title
+        descriptionLabel.text = item.description
+        descriptionLabel2.isHidden = !item.isInPurchaseApp
     }
 }
 

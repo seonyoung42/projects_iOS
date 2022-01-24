@@ -9,6 +9,13 @@ import UIKit
 import SnapKit
 
 final class RankingFeatureSectionView: UIView {
+    
+    var rankingFeatureList = [RankingFeature]() {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
     private lazy var titleLabel : UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 18, weight: .black)
@@ -25,11 +32,10 @@ final class RankingFeatureSectionView: UIView {
         return button
     }()
     
-    
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
-//
+
         let width = UIScreen.main.bounds.width - 32
         layout.itemSize = CGSize(width: width, height: RankingFeatureCollectionViewCell.height)
 
@@ -56,6 +62,7 @@ final class RankingFeatureSectionView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLayout()
+        getData()
     }
     
     required init?(coder: NSCoder) {
@@ -95,13 +102,29 @@ private extension RankingFeatureSectionView {
 extension RankingFeatureSectionView : UICollectionViewDataSource, UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        9
+        rankingFeatureList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "RankingFeatureCollectionViewCell", for: indexPath) as? RankingFeatureCollectionViewCell else { return UICollectionViewCell()}
-        cell.setup()
+        
+        let item = rankingFeatureList[indexPath.item]
+        cell.setup(item)
         
         return cell
+    }
+}
+
+// get Data
+private extension RankingFeatureSectionView {
+    func getData() {
+        guard let url = Bundle.main.url(forResource: "RankingFeature", withExtension: "plist") else { return }
+        do {
+            let data = try Data(contentsOf: url)
+            let result = try PropertyListDecoder().decode([RankingFeature].self, from: data)
+            rankingFeatureList = result
+        } catch {
+            
+        }
     }
 }

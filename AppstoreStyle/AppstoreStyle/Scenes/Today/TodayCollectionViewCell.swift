@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class TodayCollectionViewCell: UICollectionViewCell {
     
@@ -67,17 +68,19 @@ class TodayCollectionViewCell: UICollectionViewCell {
         
     }
     
-    func configureCell() {
+    func configureCell(_ today: Today) {
         contentView.layer.cornerRadius = 12
         contentView.layer.shadowColor = UIColor.black.cgColor
         contentView.layer.shadowOpacity = 0.3
         contentView.layer.shadowRadius = 10
         imageView.layer.cornerRadius = 12
 
+        descriptionLabel.text = today.description
+        titleLabel.text = today.title
+        bottomLabel.text = today.subTitle
         
-        descriptionLabel.text = "서브타이틀"
-        titleLabel.text = "앱 이름"
-        bottomLabel.text = "설명"
-        imageView.image = UIImage(named: "cat")
+        if let url = URL(string: today.imageURL) {
+            imageView.kf.setImage(with: url)
+        }
     }
 }

@@ -23,6 +23,13 @@
 		2BEFB27C279D7E58003E88C1 /* RankingFeatureSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEFB27B279D7E58003E88C1 /* RankingFeatureSectionView.swift */; };
 		2BEFB27E279D812F003E88C1 /* RankingFeatureCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEFB27D279D812F003E88C1 /* RankingFeatureCollectionViewCell.swift */; };
 		2BEFB280279D8CED003E88C1 /* ExchangeCodeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEFB27F279D8CED003E88C1 /* ExchangeCodeButtonView.swift */; };
+		2BEFB285279E8018003E88C1 /* Today.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2BEFB282279E8017003E88C1 /* Today.plist */; };
+		2BEFB286279E8018003E88C1 /* Feature.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2BEFB283279E8018003E88C1 /* Feature.plist */; };
+		2BEFB287279E8018003E88C1 /* RankingFeature.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2BEFB284279E8018003E88C1 /* RankingFeature.plist */; };
+		2BEFB28A279E8053003E88C1 /* Today.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEFB289279E8053003E88C1 /* Today.swift */; };
+		2BEFB28C279E8211003E88C1 /* Feature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEFB28B279E8211003E88C1 /* Feature.swift */; };
+		2BEFB28E279E824F003E88C1 /* RankingFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEFB28D279E824F003E88C1 /* RankingFeature.swift */; };
+		2BEFB290279E87E0003E88C1 /* AppDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BEFB28F279E87E0003E88C1 /* AppDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +49,13 @@
 		2BEFB27B279D7E58003E88C1 /* RankingFeatureSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingFeatureSectionView.swift; sourceTree = "<group>"; };
 		2BEFB27D279D812F003E88C1 /* RankingFeatureCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingFeatureCollectionViewCell.swift; sourceTree = "<group>"; };
 		2BEFB27F279D8CED003E88C1 /* ExchangeCodeButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeCodeButtonView.swift; sourceTree = "<group>"; };
+		2BEFB282279E8017003E88C1 /* Today.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Today.plist; sourceTree = "<group>"; };
+		2BEFB283279E8018003E88C1 /* Feature.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Feature.plist; sourceTree = "<group>"; };
+		2BEFB284279E8018003E88C1 /* RankingFeature.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RankingFeature.plist; sourceTree = "<group>"; };
+		2BEFB289279E8053003E88C1 /* Today.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Today.swift; sourceTree = "<group>"; };
+		2BEFB28B279E8211003E88C1 /* Feature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feature.swift; sourceTree = "<group>"; };
+		2BEFB28D279E824F003E88C1 /* RankingFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingFeature.swift; sourceTree = "<group>"; };
+		2BEFB28F279E87E0003E88C1 /* AppDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +90,7 @@
 		2BA9D2E2279C06340005937C /* AppstoreStyle */ = {
 			isa = PBXGroup;
 			children = (
+				2BEFB288279E801B003E88C1 /* Data */,
 				2BA9D305279C11850005937C /* Scenes */,
 				2BA9D2E3279C06340005937C /* AppDelegate.swift */,
 				2BA9D2E5279C06340005937C /* SceneDelegate.swift */,
@@ -99,8 +114,10 @@
 			isa = PBXGroup;
 			children = (
 				2BA9D2FD279C08240005937C /* TodayViewController.swift */,
+				2BEFB28F279E87E0003E88C1 /* AppDetailViewController.swift */,
 				2BA9D303279C0CF70005937C /* TodayCollectionViewHeader.swift */,
 				2BA9D301279C09F40005937C /* TodayCollectionViewCell.swift */,
+				2BEFB289279E8053003E88C1 /* Today.swift */,
 			);
 			path = Today;
 			sourceTree = "<group>";
@@ -115,8 +132,20 @@
 				2BEFB275279D765F003E88C1 /* FeatureSectionView.swift */,
 				2BEFB277279D79AB003E88C1 /* FeatureSectionCollectionViewCell.swift */,
 				2BEFB279279D7CBD003E88C1 /* SeparatorView.swift */,
+				2BEFB28B279E8211003E88C1 /* Feature.swift */,
+				2BEFB28D279E824F003E88C1 /* RankingFeature.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		2BEFB288279E801B003E88C1 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				2BEFB284279E8018003E88C1 /* RankingFeature.plist */,
+				2BEFB282279E8017003E88C1 /* Today.plist */,
+				2BEFB283279E8018003E88C1 /* Feature.plist */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,7 +214,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2BA9D2F0279C06420005937C /* LaunchScreen.storyboard in Resources */,
+				2BEFB287279E8018003E88C1 /* RankingFeature.plist in Resources */,
+				2BEFB285279E8018003E88C1 /* Today.plist in Resources */,
 				2BA9D2ED279C06420005937C /* Assets.xcassets in Resources */,
+				2BEFB286279E8018003E88C1 /* Feature.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -199,11 +231,15 @@
 				2BEFB27E279D812F003E88C1 /* RankingFeatureCollectionViewCell.swift in Sources */,
 				2BEFB27A279D7CBD003E88C1 /* SeparatorView.swift in Sources */,
 				2BA9D2E4279C06340005937C /* AppDelegate.swift in Sources */,
+				2BEFB28A279E8053003E88C1 /* Today.swift in Sources */,
 				2BEFB278279D79AB003E88C1 /* FeatureSectionCollectionViewCell.swift in Sources */,
 				2BEFB280279D8CED003E88C1 /* ExchangeCodeButtonView.swift in Sources */,
 				2BEFB276279D765F003E88C1 /* FeatureSectionView.swift in Sources */,
 				2BEFB27C279D7E58003E88C1 /* RankingFeatureSectionView.swift in Sources */,
+				2BEFB28C279E8211003E88C1 /* Feature.swift in Sources */,
 				2BA9D2E6279C06340005937C /* SceneDelegate.swift in Sources */,
+				2BEFB28E279E824F003E88C1 /* RankingFeature.swift in Sources */,
+				2BEFB290279E87E0003E88C1 /* AppDetailViewController.swift in Sources */,
 				2BA9D300279C082E0005937C /* AppViewController.swift in Sources */,
 				2BA9D304279C0CF70005937C /* TodayCollectionViewHeader.swift in Sources */,
 				2BA9D2FE279C08240005937C /* TodayViewController.swift in Sources */,

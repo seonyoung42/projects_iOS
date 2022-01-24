@@ -42,13 +42,20 @@ final class FeatureSectionCollectionViewCell: UICollectionViewCell {
         return imageView
     }()
     
-    func setup() {
+    func setup(_ item: Feature) {
         setupLayout()
+        typeLabel.text = item.type
+        appNameLabel.text = item.appName
+        descriptionLabel.text = item.description
         
-        typeLabel.text = "type"
-        appNameLabel.text = "App name"
-        descriptionLabel.text = "description"
-        imageView.backgroundColor = .lightGray
+        if let url = URL(string: item.imageURL) {
+            imageView.kf.setImage(with: url)
+        }
+        
+//        typeLabel.text = "type"
+//        appNameLabel.text = "App name"
+//        descriptionLabel.text = "description"
+//        imageView.backgroundColor = .lightGray
     }
 }
 
