@@ -15,6 +15,8 @@
 		2B746666279FD7E4001D5A2B /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B746665279FD7E4001D5A2B /* FeedViewController.swift */; };
 		2B746668279FD7EE001D5A2B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B746667279FD7EE001D5A2B /* ProfileViewController.swift */; };
 		2B74666D279FDB5D001D5A2B /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B74666C279FDB5D001D5A2B /* FeedTableViewCell.swift */; };
+		2B74666F279FEFF9001D5A2B /* ProfileDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B74666E279FEFF9001D5A2B /* ProfileDataView.swift */; };
+		2B746671279FF674001D5A2B /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B746670279FF674001D5A2B /* ProfileCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		2B746665279FD7E4001D5A2B /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		2B746667279FD7EE001D5A2B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2B74666C279FDB5D001D5A2B /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
+		2B74666E279FEFF9001D5A2B /* ProfileDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataView.swift; sourceTree = "<group>"; };
+		2B746670279FF674001D5A2B /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				2B746667279FD7EE001D5A2B /* ProfileViewController.swift */,
+				2B746670279FF674001D5A2B /* ProfileCollectionViewCell.swift */,
+				2B74666E279FEFF9001D5A2B /* ProfileDataView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -174,8 +180,10 @@
 				2B74664F279FD6B8001D5A2B /* AppDelegate.swift in Sources */,
 				2B746668279FD7EE001D5A2B /* ProfileViewController.swift in Sources */,
 				2B746666279FD7E4001D5A2B /* FeedViewController.swift in Sources */,
+				2B746671279FF674001D5A2B /* ProfileCollectionViewCell.swift in Sources */,
 				2B746651279FD6B8001D5A2B /* SceneDelegate.swift in Sources */,
 				2B74666D279FDB5D001D5A2B /* FeedTableViewCell.swift in Sources */,
+				2B74666F279FEFF9001D5A2B /* ProfileDataView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

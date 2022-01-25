@@ -35,7 +35,7 @@ class FeedViewController: UIViewController {
     }
     
     func setNavigationBar() {
-        navigationController?.title = "Instagram"
+        navigationItem.title = "Instagram"
         let rightBarButton = UIBarButtonItem(image: UIImage(systemName: "plus.app"), style: .plain, target: self, action: #selector(tapRightBarButton))
         navigationItem.rightBarButtonItem = rightBarButton
     }

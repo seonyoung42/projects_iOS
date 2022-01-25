@@ -18,7 +18,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let tabBarController = UITabBarController()
         let firstVC = UINavigationController(rootViewController: FeedViewController())
-        tabBarController.viewControllers = [firstVC,ProfileViewController()]
+        let secondVC = UINavigationController(rootViewController: ProfileViewController())
+        
+        tabBarController.viewControllers = [firstVC,secondVC]
         
         if let items = tabBarController.tabBar.items {
             items[0].image = UIImage(systemName: "house")
