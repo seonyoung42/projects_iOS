@@ -15,12 +15,13 @@ class ProfileViewController: UIViewController {
         imageView.layer.cornerRadius = 40
         imageView.layer.borderWidth = 1
         imageView.layer.borderColor = UIColor.quaternaryLabel.cgColor
+        imageView.clipsToBounds = true
         return imageView
     }()
     
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
-        label.text = "user name"
+        label.text = "celebgram"
         label.textColor = .label
         label.font = .systemFont(ofSize: 14, weight: .semibold)
         return label
@@ -28,8 +29,8 @@ class ProfileViewController: UIViewController {
     
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "반갑습니다"
-        label.textColor = .secondaryLabel
+        label.text = "🌟 효소 공구 D-1 \n link in bio"
+        label.textColor = .label
         label.font = .systemFont(ofSize: 14, weight: .medium)
         label.numberOfLines = 0
         return label
@@ -74,9 +75,9 @@ class ProfileViewController: UIViewController {
         return collectionView
     }()
     
-    private let photoDataView = ProfileDataView(title: "게시물", count: 123)
-    private let followerDataView = ProfileDataView(title: "팔로워", count: 2222)
-    private let followingDataView = ProfileDataView(title: "팔로잉", count: 22)
+    private let photoDataView = ProfileDataView(title: "게시물", count: "123")
+    private let followerDataView = ProfileDataView(title: "팔로워", count: "7849만")
+    private let followingDataView = ProfileDataView(title: "팔로잉", count: "0")
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,7 +106,7 @@ extension ProfileViewController: UICollectionViewDataSource, UICollectionViewDel
 private extension ProfileViewController {
     
     func setNavigationBar() {
-        navigationItem.title = "userName"
+        navigationItem.title = "celebgram"
         let rightBarButton = UIBarButtonItem(image: UIImage(systemName: "ellipsis"), style: .plain, target: self, action: #selector(tapRightBarButton))
         navigationItem.rightBarButtonItem = rightBarButton
     }

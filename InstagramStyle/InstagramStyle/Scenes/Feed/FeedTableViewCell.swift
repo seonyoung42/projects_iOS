@@ -10,7 +10,6 @@ import SnapKit
 
 
 // sfsymbol을 사용하는 경우 button의 이미지 크기를 원하는 대로 조정하지 못하는 이슈
-
 extension UIButton {
     func setImage(systemName: String) {
         contentHorizontalAlignment = .fill

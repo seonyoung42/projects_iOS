@@ -41,13 +41,16 @@ class FeedViewController: UIViewController {
     }
     
     @objc func tapRightBarButton() {
-        
+        let imagepicker = UIImagePickerController()
+        imagepicker.allowsEditing = true
+        imagepicker.sourceType = .photoLibrary
+        imagepicker.delegate = self
+        present(imagepicker, animated: true, completion: nil)
     }
 
 }
 
 //tableview datasource, delegate
-
 extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         20
@@ -59,5 +62,24 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         cell.setupCell()
         return cell
     }
-    
+}
+
+//imagepicker delegate
+extension FeedViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        var selectedImage: UIImage?
+        
+        if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            selectedImage = editedImage
+        } else if let originImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            selectedImage = originImage
+        }
+        
+        picker.dismiss(animated: true) { [weak self] in
+            let nextVC = UploadPostViewController()
+            nextVC.uploadImage = selectedImage
+            self?.navigationController?.pushViewController(nextVC, animated: true)
+        }
+    }
 }

@@ -10,7 +10,7 @@ import SnapKit
 
 final class ProfileDataView: UIView {
     private let title: String
-    private let count: Int
+    private let count: String
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
@@ -26,7 +26,7 @@ final class ProfileDataView: UIView {
         return label
     }()
     
-    init(title: String, count: Int) {
+    init(title: String, count: String) {
         self.title = title
         self.count = count
         super.init(frame: .zero)

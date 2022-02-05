@@ -17,6 +17,7 @@
 		2B74666D279FDB5D001D5A2B /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B74666C279FDB5D001D5A2B /* FeedTableViewCell.swift */; };
 		2B74666F279FEFF9001D5A2B /* ProfileDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B74666E279FEFF9001D5A2B /* ProfileDataView.swift */; };
 		2B746671279FF674001D5A2B /* ProfileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B746670279FF674001D5A2B /* ProfileCollectionViewCell.swift */; };
+		2B746674279FFAB8001D5A2B /* UploadPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B746673279FFAB8001D5A2B /* UploadPostViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		2B74666C279FDB5D001D5A2B /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		2B74666E279FEFF9001D5A2B /* ProfileDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataView.swift; sourceTree = "<group>"; };
 		2B746670279FF674001D5A2B /* ProfileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCollectionViewCell.swift; sourceTree = "<group>"; };
+		2B746673279FFAB8001D5A2B /* UploadPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 		2B746669279FD7F1001D5A2B /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				2B746672279FFAA2001D5A2B /* UploadPost */,
 				2B74666A279FD7F8001D5A2B /* Feed */,
 				2B74666B279FD7FD001D5A2B /* Profile */,
 			);
@@ -100,6 +103,14 @@
 				2B74666E279FEFF9001D5A2B /* ProfileDataView.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		2B746672279FFAA2001D5A2B /* UploadPost */ = {
+			isa = PBXGroup;
+			children = (
+				2B746673279FFAB8001D5A2B /* UploadPostViewController.swift */,
+			);
+			path = UploadPost;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -180,6 +191,7 @@
 				2B74664F279FD6B8001D5A2B /* AppDelegate.swift in Sources */,
 				2B746668279FD7EE001D5A2B /* ProfileViewController.swift in Sources */,
 				2B746666279FD7E4001D5A2B /* FeedViewController.swift in Sources */,
+				2B746674279FFAB8001D5A2B /* UploadPostViewController.swift in Sources */,
 				2B746671279FF674001D5A2B /* ProfileCollectionViewCell.swift in Sources */,
 				2B746651279FD6B8001D5A2B /* SceneDelegate.swift in Sources */,
 				2B74666D279FDB5D001D5A2B /* FeedTableViewCell.swift in Sources */,
