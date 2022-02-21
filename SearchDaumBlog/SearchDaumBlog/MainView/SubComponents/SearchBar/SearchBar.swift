@@ -66,6 +66,7 @@ class SearchBar: UISearchBar {
          searchButtonTapped는 어떠한 상황을 발생시켜야할까?
          1. endEditing(키보드 내려감)
          */
+        
         searhButtonTapped
             .asSignal()
             .emit(to: self.rx.endEditing)
@@ -96,7 +97,7 @@ class SearchBar: UISearchBar {
 
         searchTextField.snp.makeConstraints {
             $0.leading.equalToSuperview().inset(12)
-            $0.trailing.equalTo(searchButton.snp.leading).inset(-12)
+            $0.trailing.equalTo(searchButton.snp.leading).offset(-12)
             $0.centerY.equalToSuperview()
         }
         

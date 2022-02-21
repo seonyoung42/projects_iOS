@@ -36,7 +36,7 @@ class BlogListCell: UITableViewCell {
         thumbnailImageview.snp.makeConstraints {
             $0.top.trailing.bottom.equalToSuperview().inset(8)
             $0.centerY.equalToSuperview()
-            $0.width.height.equalTo(80)
+            $0.width.equalTo(thumbnailImageview.snp.height)
         }
         
         titleLabel.snp.makeConstraints {
@@ -48,7 +48,7 @@ class BlogListCell: UITableViewCell {
         dateLabel.snp.makeConstraints {
             $0.top.equalTo(titleLabel.snp.bottom).offset(8)
             $0.leading.trailing.equalTo(titleLabel)
-//            $0.bottom.equalTo(thumbnailImageview)
+            $0.bottom.equalTo(thumbnailImageview)
         }
     }
     
