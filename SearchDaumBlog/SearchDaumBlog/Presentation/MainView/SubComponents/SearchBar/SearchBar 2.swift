@@ -15,18 +15,17 @@ class SearchBar: UISearchBar {
     
     let searchButton = UIButton()
     
-    // SearchBar 버튼 탭 이베트
-    // (UI event이기 때문에 PublishSubject대신 error를 방출하지 않는 PublishReplay사용)
-    let searhButtonTapped = PublishRelay<Void>()
-    
-    // SearchBar 외부(MainViewController)로 내보낼 이벤트
-    // (text)
-    var shouldLoadResult = Observable<String>.of("")
+//    // SearchBar 버튼 탭 이베트
+//    // (UI event이기 때문에 PublishSubject대신 error를 방출하지 않는 PublishReplay사용)
+//    let searhButtonTapped = PublishRelay<Void>()
+//
+//    // SearchBar 외부(MainViewController)로 내보낼 이벤트
+//    // (text)
+//    var shouldLoadResult = Observable<String>.of("")
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        bind()
         attribute()
         layout()
     }
@@ -35,7 +34,10 @@ class SearchBar: UISearchBar {
         fatalError("init(coder:) has not been implemented")
     }
  
-    private func bind() {
+    private func bind(_ viewModel: SearchBarViewModel) {
+        self.rx.text
+            .bind(to: viewModel.queryText)
+            .disposed(by: disposeBag)
         /*
          seachBar의 버튼 탭 이벤트
          1.SearchBar의 search button(keyboard의 searchButton) tapped
@@ -59,7 +61,7 @@ class SearchBar: UISearchBar {
              위의 두 가지 Observable이 이벤트를 발생할 때마다
              해당 이벤트가 searchButonTapped로 binding되어 해당 subject가 이벤트를 가질 수 있음
              */
-            .bind(to: searhButtonTapped)
+            .bind(to: viewModel.searhButtonTapped)
             .disposed(by: disposeBag)
         
         /*
@@ -67,7 +69,7 @@ class SearchBar: UISearchBar {
          1. endEditing(키보드 내려감)
          */
         
-        searhButtonTapped
+        viewModel.searhButtonTapped
             .asSignal()
             .emit(to: self.rx.endEditing)
             .disposed(by: disposeBag)
@@ -79,10 +81,10 @@ class SearchBar: UISearchBar {
          - distinctuntilChanged : 중복값을 전달하지 않음
          */
         
-        self.shouldLoadResult = searhButtonTapped
-            .withLatestFrom(self.rx.text) { $1 ?? "" }
-            .filter { !$0.isEmpty }
-            .distinctUntilChanged()
+//        self.shouldLoadResult = searhButtonTapped
+//            .withLatestFrom(self.rx.text) { $1 ?? "" }
+//            .filter { !$0.isEmpty }
+//            .distinctUntilChanged()
     }
     
     
