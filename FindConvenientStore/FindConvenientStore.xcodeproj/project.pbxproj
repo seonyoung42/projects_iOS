@@ -57,6 +57,12 @@
 		2B2646FB27D7437C0096D528 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 2B2646FA27D7437C0096D528 /* RxCocoa */; };
 		2B2646FE27D7439A0096D528 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 2B2646FD27D7439A0096D528 /* SnapKit */; };
 		2B26470027D752510096D528 /* MTMapViewError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2646FF27D752510096D528 /* MTMapViewError.swift */; };
+		2B26470227D999D30096D528 /* DetailListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B26470127D999D30096D528 /* DetailListCell.swift */; };
+		2B26470427D99BE80096D528 /* DetailListBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B26470327D99BE80096D528 /* DetailListBackgroundView.swift */; };
+		2B26470627D99BF10096D528 /* DetailListBackgroundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B26470527D99BF10096D528 /* DetailListBackgroundViewModel.swift */; };
+		2B92C20D27E8768B002E8BA9 /* LocalAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B92C20C27E8768B002E8BA9 /* LocalAPI.swift */; };
+		2B92C20F27E8779E002E8BA9 /* LocalNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B92C20E27E8779E002E8BA9 /* LocalNetwork.swift */; };
+		2B92C21127E8793D002E8BA9 /* LocationInformationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B92C21027E8793D002E8BA9 /* LocationInformationModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -116,6 +122,12 @@
 		2B2646EF27D742760096D528 /* LocationInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInformationViewController.swift; sourceTree = "<group>"; };
 		2B2646F127D742B30096D528 /* LocationInformationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInformationViewModel.swift; sourceTree = "<group>"; };
 		2B2646FF27D752510096D528 /* MTMapViewError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MTMapViewError.swift; sourceTree = "<group>"; };
+		2B26470127D999D30096D528 /* DetailListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListCell.swift; sourceTree = "<group>"; };
+		2B26470327D99BE80096D528 /* DetailListBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListBackgroundView.swift; sourceTree = "<group>"; };
+		2B26470527D99BF10096D528 /* DetailListBackgroundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailListBackgroundViewModel.swift; sourceTree = "<group>"; };
+		2B92C20C27E8768B002E8BA9 /* LocalAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalAPI.swift; sourceTree = "<group>"; };
+		2B92C20E27E8779E002E8BA9 /* LocalNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNetwork.swift; sourceTree = "<group>"; };
+		2B92C21027E8793D002E8BA9 /* LocationInformationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationInformationModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,10 +175,11 @@
 			isa = PBXGroup;
 			children = (
 				2B26469227D73DB50096D528 /* BridgingHeader.h */,
-				2B2646EE27D742580096D528 /* Presentation */,
-				2B2646E927D740920096D528 /* Entities */,
 				2B26465527D7380E0096D528 /* AppDelegate.swift */,
 				2B26465727D7380E0096D528 /* SceneDelegate.swift */,
+				2B92C20B27E87676002E8BA9 /* Network */,
+				2B2646EE27D742580096D528 /* Presentation */,
+				2B2646E927D740920096D528 /* Entities */,
 				2B26465E27D738120096D528 /* Assets.xcassets */,
 				2B26466027D738120096D528 /* LaunchScreen.storyboard */,
 				2B26466327D738120096D528 /* Info.plist */,
@@ -262,10 +275,31 @@
 		2B2646EE27D742580096D528 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				2B2646EF27D742760096D528 /* LocationInformationViewController.swift */,
-				2B2646F127D742B30096D528 /* LocationInformationViewModel.swift */,
+				2B92C21227E87942002E8BA9 /* LocationInfo */,
+				2B26470127D999D30096D528 /* DetailListCell.swift */,
+				2B26470327D99BE80096D528 /* DetailListBackgroundView.swift */,
+				2B26470527D99BF10096D528 /* DetailListBackgroundViewModel.swift */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		2B92C20B27E87676002E8BA9 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				2B92C20C27E8768B002E8BA9 /* LocalAPI.swift */,
+				2B92C20E27E8779E002E8BA9 /* LocalNetwork.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		2B92C21227E87942002E8BA9 /* LocationInfo */ = {
+			isa = PBXGroup;
+			children = (
+				2B2646EF27D742760096D528 /* LocationInformationViewController.swift */,
+				2B92C21027E8793D002E8BA9 /* LocationInformationModel.swift */,
+				2B2646F127D742B30096D528 /* LocationInformationViewModel.swift */,
+			);
+			path = LocationInfo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -376,11 +410,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B2646E827D740890096D528 /* LocationData.swift in Sources */,
+				2B26470427D99BE80096D528 /* DetailListBackgroundView.swift in Sources */,
+				2B26470627D99BF10096D528 /* DetailListBackgroundViewModel.swift in Sources */,
 				2B2646EB27D740D00096D528 /* KLDocument.swift in Sources */,
+				2B92C20F27E8779E002E8BA9 /* LocalNetwork.swift in Sources */,
 				2B2646F027D742760096D528 /* LocationInformationViewController.swift in Sources */,
 				2B26470027D752510096D528 /* MTMapViewError.swift in Sources */,
+				2B92C20D27E8768B002E8BA9 /* LocalAPI.swift in Sources */,
+				2B26470227D999D30096D528 /* DetailListCell.swift in Sources */,
 				2B26465627D7380E0096D528 /* AppDelegate.swift in Sources */,
 				2B2646ED27D741D80096D528 /* DetailListCellData.swift in Sources */,
+				2B92C21127E8793D002E8BA9 /* LocationInformationModel.swift in Sources */,
 				2B26465827D7380E0096D528 /* SceneDelegate.swift in Sources */,
 				2B2646F227D742B30096D528 /* LocationInformationViewModel.swift in Sources */,
 			);
