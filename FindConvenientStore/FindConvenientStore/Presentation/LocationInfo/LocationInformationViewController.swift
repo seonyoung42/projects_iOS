@@ -37,8 +37,11 @@ class LocationInformationViewController: UIViewController {
         
         viewModel.setMapCenter
             .emit(to: mapView.rx.setMapCenterPoint)
+            .disposed(by: disposebag)
+        
         viewModel.errorMessage
             .emit(to: self.rx.presentAlertController)
+            .disposed(by: disposebag)
         
         viewModel.detailListCellData
             .drive(detailList.rx.items) { tableView, row, data in
@@ -51,6 +54,7 @@ class LocationInformationViewController: UIViewController {
         viewModel.detailListCellData
             .map{ $0.compactMap { $0.point }}
             .drive(self.rx.addPOIItems)
+            .disposed(by: disposebag)
         
         viewModel.scrollToSelectedLocation
             .emit(to: self.rx.showSelectedLocation)
@@ -92,16 +96,16 @@ class LocationInformationViewController: UIViewController {
             $0.top.left.trailing.equalTo(view.safeAreaLayoutGuide)
             $0.bottom.equalTo(view.snp.centerY).offset(100)
         }
-        
+
         currentLocationButton.snp.makeConstraints {
-            $0.bottom.equalTo(detailList.snp.top).offset(12) //offset(-12)
+            $0.bottom.equalTo(detailList.snp.top).offset(-12) //offset(-12)
             $0.leading.equalTo(mapView).inset(12) //offset(12_
             $0.width.height.equalTo(40)
         }
         
         detailList.snp.makeConstraints {
-            $0.centerY.leading.trailing.equalToSuperview()
-            $0.bottom.equalTo(view.safeAreaLayoutGuide).inset(8)
+            $0.leading.trailing.equalToSuperview()
+            $0.bottom.equalTo(view.safeAreaLayoutGuide)
             $0.top.equalTo(mapView.snp.bottom)
         }
     }

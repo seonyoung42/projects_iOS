@@ -45,7 +45,7 @@ struct LocationInformationViewModel {
                 return value
             }
         
-        let csvLocationDataErrorMessage = cvsLocationDataResult
+        let cvsLocationDataErrorMessage = cvsLocationDataResult
             .compactMap { data -> String? in
                 switch data {
                 case let .success(data) where data.documents.isEmpty:
@@ -92,12 +92,11 @@ struct LocationInformationViewModel {
         
         errorMessage = Observable
             .merge(
+                cvsLocationDataErrorMessage,
                 mapViewError.asObservable()
             )
             .asSignal(onErrorJustReturn: "잠시 후 다시 시도해주세요.")
         
-        // API 연결 전 임의로 값 지정
-//        detailListCellData = Driver.just([])
         detailListCellData = documentData
             .map(model.documentsToCellData(_:))
             .asDriver(onErrorDriveWith: .empty())

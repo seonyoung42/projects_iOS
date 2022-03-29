@@ -1,13 +1,16 @@
 //
-//  FindConvenientStoreTests.swift
+//  LocationInformatinModelTests.swift
 //  FindConvenientStoreTests
 //
-//  Created by 장선영 on 2022/03/22.
+//  Created by 장선영 on 2022/03/29.
 //
 
 import XCTest
+import Nimble
 
-class FindConvenientStoreTests: XCTestCase {
+@testable import FindConvenientStore
+
+class LocationInformatinModelTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -24,9 +27,8 @@ class FindConvenientStoreTests: XCTestCase {
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
-        measure {
+        self.measure {
             // Put the code you want to measure the time of here.
         }
     }
-
 }

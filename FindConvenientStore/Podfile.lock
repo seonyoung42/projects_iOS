@@ -1,0 +1,20 @@
+PODS:
+  - Nimble (9.2.1)
+  - Stubber (1.5.3)
+
+DEPENDENCIES:
+  - Nimble
+  - Stubber
+
+SPEC REPOS:
+  trunk:
+    - Nimble
+    - Stubber
+
+SPEC CHECKSUMS:
+  Nimble: e7e615c0335ee4bf5b0d786685451e62746117d5
+  Stubber: 3ea4080870feeaf5b1637314a92245eef9b8c8e7
+
+PODFILE CHECKSUM: 191524e1f719f3b9441a2ce2ec4a3ed8fd569b93
+
+COCOAPODS: 1.11.3
