@@ -54,7 +54,6 @@ extension ReviewListViewController: ReviewListProtocol {
     }
     
     func reloadTableView() {
-        print("reloadTableView")
         tableView.reloadData()
     }
 }

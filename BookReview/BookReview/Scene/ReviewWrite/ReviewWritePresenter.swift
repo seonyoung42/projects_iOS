@@ -9,6 +9,7 @@ import Foundation
 
 protocol ReviewWriteProtocol {
     func setupNavigationBar()
+    func setupView()
     func showCloseAlertController()
     func close()
 }
@@ -22,6 +23,7 @@ final class ReviewWritePresenter {
     
     func viewDidLoad() {
         viewController.setupNavigationBar()
+        viewController.setupView()
     }
     
     func didTapLeftBarButton() {
